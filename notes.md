@@ -1,6 +1,6 @@
-ANGRY:
-((die-cut sticker)) of ((angry headshot of [(cjw):0.8] [man])) (sticker fantasy), (yelling, furious, an angry expression), goofy, graphic sticker art, chibi style, clear skin \n
-((die-cut sticker)) of ((angry headshot of [(cjw):0.8] [woman])) (sticker fantasy), (yelling, furious, an angry expression), goofy, graphic sticker art, chibi style, clear skin
+ANGRY:\
+((die-cut sticker)) of ((angry headshot of [(cjw):0.8] [man])) (sticker fantasy), (yelling, furious, an angry expression), goofy, graphic sticker art, chibi style, clear skin\
+((die-cut sticker)) of ((angry headshot of [(cjw):0.8] [woman])) (sticker fantasy), (yelling, furious, an angry expression), goofy, graphic sticker art, chibi style, clear skin\
 
 LAUGHING:
 ((die-cut sticker)) of ((laughing headshot of [(cjw):0.8] [man])) (sticker fantasy), (roaring with laughter, a jolly expression), goofy, graphic sticker art, chibi style, clear skin
