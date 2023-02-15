@@ -22,8 +22,6 @@ def predict():
     serving_url = body["serving_url"]
     gender = body["gender"]
 
-    print(REPLICATE_TOKEN)
-
     return jsonify({"model_id": 0})
 
     headers = {'Content-Type': 'application/json', 'Authorization': 'Token ' + REPLICATE_TOKEN}
