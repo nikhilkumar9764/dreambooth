@@ -17,6 +17,7 @@ WOW:
 
 LIKE:
 ((die-cut sticker fantasy)) of ((happy headshot of [(cjw):0.8] [man])) (sticker fantasy), (smiling, happy, satisfied), goofy, graphic sticker art, chibi style, clear skin
+((die-cut sticker fantasy)) of ((happy headshot of [(cjw):0.8] [woman])) (sticker fantasy), (smiling, happy, satisfied), goofy, graphic sticker art, chibi style, clear skin
 
 
 NEGATIVE PROMPT:
