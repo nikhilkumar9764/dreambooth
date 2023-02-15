@@ -1,27 +1,29 @@
-ANGRY:
-((die-cut sticker)) of ((angry headshot of [(cjw):0.8] [man])) (sticker fantasy), (yelling, furious, an angry expression), goofy, graphic sticker art, chibi style, clear skin
-((die-cut sticker)) of ((angry headshot of [(cjw):0.8] [woman])) (sticker fantasy), (yelling, furious, an angry expression), goofy, graphic sticker art, chibi style, clear skin
+ANGRY:\
+((die-cut sticker fantasy)) of ((angry headshot of [(cjw):0.8] [man])) (sticker fantasy), (yelling, furious, an angry expression), goofy, graphic sticker art, chibi style, clear skin\
+((die-cut sticker fantasy)) of ((angry headshot of [(cjw):0.8] [woman])) (sticker fantasy), (yelling, furious, an angry expression), goofy, graphic sticker art, chibi style, clear skin
 
-LAUGHING:
-((die-cut sticker)) of ((laughing headshot of [(cjw):0.8] [man])) (sticker fantasy), (roaring with laughter, a jolly expression), goofy, graphic sticker art, chibi style, clear skin
-((die-cut sticker)) of ((laughing headshot of [(cjw):0.8] [woman])) (sticker fantasy), (roaring with laughter, a jolly expression), goofy, graphic sticker art, chibi style, clear skin
+LAUGHING:\
+((die-cut sticker fantasy)) of ((laughing headshot of [(cjw):0.8] [man])) (sticker fantasy), (roaring with laughter, a jolly expression), goofy, graphic sticker art, chibi style, clear skin\
+((die-cut sticker fantasy)) of ((laughing headshot of [(cjw):0.8] [woman])) (sticker fantasy), (roaring with laughter, a jolly expression), goofy, graphic sticker art, chibi style, clear skin
 
-SAD:
-((die-cut sticker fantasy)) of ((depressing headshot of [(cjw):0.8] [man])) (sticker fantasy), (crying, heartbroken, a sad expression), goofy, graphic sticker art, chibi style, clear skin
+SAD:\
+((die-cut sticker fantasy)) of ((depressing headshot of [(cjw):0.8] [man])) (sticker fantasy), (crying, heartbroken, a sad expression), goofy, graphic sticker art, chibi style, clear skin\
 ((die-cut sticker fantasy)) of ((depressing headshot of [(cjw):0.8] [woman])) (sticker fantasy), (crying, heartbroken, a sad expression), goofy, graphic sticker art, chibi style, clear skin
 
-WOW:
-((die-cut sticker fantasy)) of ((headshot of [(cjw):0.8] [man])) (sticker fantasy), (in awe, amazed, a surprised expression), goofy, graphic sticker art, chibi style, clear skin
+WOW:\
+((die-cut sticker fantasy)) of ((headshot of [(cjw):0.8] [man])) (sticker fantasy), (in awe, amazed, a surprised expression), goofy, graphic sticker art, chibi style, clear skin\
 ((die-cut sticker fantasy)) of ((headshot of [(cjw):0.8] [woman])) (sticker fantasy), (in awe, amazed, a surprised expression), goofy, graphic sticker art, chibi style, clear skin
 
 
 LIKE:
 ((die-cut sticker fantasy)) of ((happy headshot of [(cjw):0.8] [man])) (sticker fantasy), (smiling, happy, satisfied), goofy, graphic sticker art, chibi style, clear skin
 ((die-cut sticker fantasy)) of ((happy headshot of [(cjw):0.8] [woman])) (sticker fantasy), (smiling, happy, satisfied), goofy, graphic sticker art, chibi style, clear skin
+LIKE:\
+((die-cut sticker fantasy)) of ((happy headshot of [(cjw):0.8] [man])) (sticker fantasy), (smiling, happy, satisfied), goofy, graphic sticker art, chibi style, clear skin\
+((die-cut sticker fantasy)) of ((happy headshot of [(cjw):0.8] [woman])) (sticker fantasy), (smiling, happy, satisfied), goofy, graphic sticker art, chibi style, clear skin
 
-
-NEGATIVE PROMPT:
-((out of frame)), ((multiple heads)), sexual, nude, risque, nsfw, full body, multiple stickers, 3d, deformed, weird mouth, breast, penis, extra limbs, hands, feet, out of frame, clipping
+NEGATIVE PROMPT:\
+((out of frame)), ((multiple heads)), sexual, nude, risque, nsfw, full body, multiple stickers, 3d, deformed, weird teeth, breast, penis, extra limbs, hands, feet, out of frame, clipping, duo, clone, double
 
 
 <!-- like reaction:
