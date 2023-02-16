@@ -1,19 +1,21 @@
 curl -X POST \
     -H "Content-Type: application/json" \
     -d '{
-        "prompt": "((die-cut sticker fantasy)) of ((laughing headshot of [(cjw):0.8] [man])) (sticker fantasy), (roaring with laughter, a jolly expression), goofy, graphic sticker art, chibi style, clear skin",
+        "prompt": "((die-cut sticker fantasy)) of ((headshot of [(cjw):0.8] [man])) (sticker fantasy), (in awe, amazed, a surprised expression), goofy, graphic sticker art, chibi style, clear skin",
         "negative_prompt": "((out of frame)), ((multiple heads)), sexual, nude, risque, nsfw, full body, multiple stickers, 3d, deformed, weird teeth, breast, penis, extra limbs, hands, feet, out of frame, clipping, duo, clone, double, duplicated",
         "num_outputs": "4",
         "model_name": "niranjansenthilkumar/dreambooth_testing",
-        "version": "6919cc1a2bcb421c601347d9052b7e567473a89b54a82dcdef57ba72f00fba55"
+        "version": "6919cc1a2bcb421c601347d9052b7e567473a89b54a82dcdef57ba72f00fba55",
+        "notes": "YOUR NOTES HERE"
         }' \
     http://127.0.0.1:5000/api/predict
 
 
+curl -X POST -F file=@data.zip http://127.0.0.1:5000/api/upload
+
+
 curl -X POST -H "Authorization: Token $REPLICATE_API_TOKEN" https://dreambooth-api-experimental.replicate.com/v1/upload/data.zip)
-
-
-curl -X PUT -H "Content-Type: application/zip" --upload-file data.zip https://storage.googleapis.com/replicate-files/IJyjFJ5QgP3mqQn6E1uOU7S7AGDb428Ez3tRwYkqV7lxLpTt/data.zip?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=replicate-web-production%40replicate-production.iam.gserviceaccount.com%2F20230216%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20230216T005714Z&X-Goog-Expires=300&X-Goog-SignedHeaders=content-type%3Bhost&X-Goog-Signature=330d681104b701852d534271963d9bab5b97727dc210df394465c7653af7c4a83e3ae20840720960fde3757f29e54628fede1903d51bdffc1f8e00615c1b90459955cdb617cc9b9dd4d43a476ba594fe0dfb3ebf0d06cc6c8ac666363cb28ab76510124978c5da71cbbce0c81c5e70808b2baaed2938711abb1f1b503e67b2a1ab70f0e048aa1f547d622ce5732dba42ed8f914301175e47c94f18437fd2b239d56d9dca75f7a391e79475734626a601c56f1835ac013e97a89a85939a7b04a6f4606073f5b30290f107c17d69c6f0fbf1a7e65bbc6b1fb69c59f21d0d6d685df24a7a61e60d634ee1f2c7db79a91ea4f9052356f0c443badd6f62d51766f6fe
+curl -X PUT -H "Content-Type: application/zip" --upload-file data.zip
 
 RESPONSE=$(curl -X POST -H "Authorization: Token $REPLICATE_API_TOKEN" https://dreambooth-api-experimental.replicate.com/v1/upload/data.zip)
 curl -X PUT -H "Content-Type: application/zip" --upload-file data.zip "$(jq -r ".upload_url" <<< "$RESPONSE")"

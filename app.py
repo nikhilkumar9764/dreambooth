@@ -10,7 +10,6 @@ import subprocess
 import json
 import requests
 
-
 REPLICATE_TOKEN = os.getenv('REPLICATE_API_TOKEN')
 
 app = Flask(__name__)
@@ -23,11 +22,7 @@ def dreambooth_create_model():
     model_name = body["model_name"]
     serving_url = body["serving_url"]
     gender = body["gender"]
-
-    print(123)
-    print(serving_url)
-
-    # return jsonify({"prediction_url": 0})
+    notes = body["notes"]
 
     headers = {'Content-Type': 'application/json', 'Authorization': 'Token ' + REPLICATE_TOKEN}
     url = "https://dreambooth-api-experimental.replicate.com/v1/trainings"
@@ -38,22 +33,23 @@ def dreambooth_create_model():
                 "class_prompt": "a photo of a " + gender,
                 "instance_data": serving_url,
                 "max_train_steps": 2000,
+                "center_crop": True,
                 "ckpt_base": "https://huggingface.co/prompthero/openjourney/resolve/main/mdjrny-v4.ckpt"
             },
             "model": model_name,
             "trainer_version": "9c41656f8ae2e3d2af4c1b46913d7467cd891f2c1c5f3d97f1142e876e63ed7a",
+            "notes": "YOUR NOTES HERE",
             "webhook": "https://webhook.site/50ac6aa8-bab6-4b0c-831b-3989d9be6811"
     }
 
     r = requests.post(url, headers=headers, json=data)
-
     return r.json()
 
 # Predict
 @app.route("/api/predict", methods=["POST"])
 def predict():
+    
     body = request.get_json()
-    print(body)
     prompt = body["prompt"]
     negative_prompt = body["negative_prompt"]
     num_outputs = body["num_outputs"]
@@ -65,63 +61,52 @@ def predict():
     version = model.versions.get(version)
 
     inputs = {
-    # Input prompt
-    'prompt': prompt,
+        # Input prompt
+        'prompt': prompt,
 
-    # Specify things to not see in the output
-    'negative_prompt': negative_prompt,
+        # Specify things to not see in the output
+        'negative_prompt': negative_prompt,
 
-    # Width of output image. Maximum size is 1024x768 or 768x1024 because
-    # of memory limits
-    'width': 512,
+        # Width of output image. Maximum size is 1024x768 or 768x1024 because
+        # of memory limits
+        'width': 512,
 
-    # Height of output image. Maximum size is 1024x768 or 768x1024 because
-    # of memory limits
-    'height': 704,
+        # Height of output image. Maximum size is 1024x768 or 768x1024 because
+        # of memory limits
+        'height': 704,
 
-    # Prompt strength when using init image. 1.0 corresponds to full
-    # destruction of information in init image
-    'prompt_strength': 0.8,
+        # Prompt strength when using init image. 1.0 corresponds to full
+        # destruction of information in init image
+        'prompt_strength': 0.8,
 
-    # Number of images to output.
-    # Range: 1 to 4
-    'num_outputs': num_outputs,
+        # Number of images to output.
+        # Range: 1 to 4
+        'num_outputs': num_outputs,
 
-    # Number of denoising steps
-    # Range: 1 to 500
-    'num_inference_steps': 50,
+        # Number of denoising steps
+        # Range: 1 to 500
+        'num_inference_steps': 50,
 
-    # Scale for classifier-free guidance
-    # Range: 1 to 20
-    'guidance_scale': 7.5,
+        # Scale for classifier-free guidance
+        # Range: 1 to 20
+        'guidance_scale': 7.5,
 
-    # Choose a scheduler
-    'scheduler': "DDIM",
+        # Choose a scheduler
+        'scheduler': "DDIM",
 
-    # Disable safety check. Use at your own risk!
-    'disable_safety_check': False,
+        # Disable safety check. Use at your own risk!
+        'disable_safety_check': False,
     }
 
     output = version.predict(**inputs)
-    return jsonify({"prediction_url": output[0]})
+    return jsonify({"prediction_url": output})
 
 
-# Predict
-@app.route("/api/uploadimages", methods=["POST"])
-import os
-import json
-import requests
-from flask import Flask, request, jsonify
-
-app = Flask(__name__)
-
+# Upload Images
 @app.route('/api/upload', methods=['POST'])
 def upload():
-    # Get the API token from the environment variable
-    api_token = os.environ.get('REPLICATE_API_TOKEN')
-
     # Send a POST request to the Replicate API to get the upload URL
-    headers = {'Authorization': 'Token ' + api_token}
+    headers = {'Authorization': 'Token ' + REPLICATE_TOKEN}
     response = requests.post('https://dreambooth-api-experimental.replicate.com/v1/upload/data.zip', headers=headers)
 
     # Extract the upload URL and serving URL from the response
