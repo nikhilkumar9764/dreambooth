@@ -1,5 +1,7 @@
 ((die-cut sticker fantasy illustration)) of ((angry headshot of [(cjw):0.8] [man])) (sticker fantasy), (yelling, furious, an angry expression), goofy, graphic sticker art, chibi style, clear skin\
 
+centered and zoomed out shot of ((die-cut sticker fantasy illustration)) of ((happy portrait of [(cjw):0.8] [man])) (sticker fantasy), (smiling, happy, satisfied), goofy, graphic sticker art, chibi style, clear skin\
+
 
 ANGRY:\
 ((die-cut sticker fantasy)) of ((angry headshot of [(cjw):0.8] [man])) (sticker fantasy), (yelling, furious, an angry expression), goofy, graphic sticker art, chibi style, clear skin\
