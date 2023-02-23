@@ -11,7 +11,13 @@ curl -X POST \
     http://127.0.0.1:5000/api/predict
 
 
+
+
+
+curl -X POST -F file=@data.zip http://127.0.0.1:5000/process_images
+
 curl -X POST -F file=@data.zip http://127.0.0.1:5000/api/upload
+
 
 
 curl -X POST -H "Authorization: Token $REPLICATE_API_TOKEN" https://dreambooth-api-experimental.replicate.com/v1/upload/data.zip)
@@ -30,6 +36,22 @@ curl -X POST \
         "serving_url": "https://replicate.delivery/pbxt/IJuWH2NVpCLg09TFfyGnNurTQEM5YWHHVwBvZeqhhfweO2wc/data.zip"
         }' \
     http://127.0.0.1:5000/api/dreambooth_create_model
+
+curl -X POST \
+    -H "Content-Type: application/json" \
+    -d '{
+        "model_name": "niranjansenthilkumar/dreambooth_testing2",
+        "gender": "man",
+        "serving_url": "https://replicate.delivery/pbxt/IJuWH2NVpCLg09TFfyGnNurTQEM5YWHHVwBvZeqhhfweO2wc/data.zip",
+        "notes": "NOTES",
+        "webhook_url": "http://127.0.0.1:5000/api/webhook"
+        }' \
+    http://127.0.0.1:5000/api/dreambooth_create_model
+
+
+curl -H "Authorization: Token $REPLICATE_API_TOKEN" \ 
+    http://127.0.0.1:5000/api/webhook
+
 
 
 

@@ -10,6 +10,11 @@ import subprocess
 import json
 import requests
 
+import zipfile
+from PIL import Image
+import cv2
+
+
 REPLICATE_TOKEN = os.getenv('REPLICATE_API_TOKEN')
 
 app = Flask(__name__)
@@ -23,6 +28,7 @@ def dreambooth_create_model():
     serving_url = body["serving_url"]
     gender = body["gender"]
     notes = body["notes"]
+    webhook = body["webhook_url"]
 
     headers = {'Content-Type': 'application/json', 'Authorization': 'Token ' + REPLICATE_TOKEN}
     url = "https://dreambooth-api-experimental.replicate.com/v1/trainings"
@@ -33,17 +39,24 @@ def dreambooth_create_model():
                 "class_prompt": "a photo of a " + gender,
                 "instance_data": serving_url,
                 "max_train_steps": 2000,
-                "center_crop": True,
                 "ckpt_base": "https://huggingface.co/prompthero/openjourney/resolve/main/mdjrny-v4.ckpt"
             },
             "model": model_name,
             "trainer_version": "9c41656f8ae2e3d2af4c1b46913d7467cd891f2c1c5f3d97f1142e876e63ed7a",
-            "notes": "YOUR NOTES HERE",
-            "webhook": "https://webhook.site/50ac6aa8-bab6-4b0c-831b-3989d9be6811"
+            "notes": notes,
+            "webhook": webhook
     }
 
     r = requests.post(url, headers=headers, json=data)
     return r.json()
+
+# Webhook
+@app.route('/api/webhook', methods=['POST'])
+def webhook():
+    # Process the webhook data here, e.g. update a database or send a notification
+    data = request.get_json()
+    print(data)
+    return 'Webhook received'
 
 # Predict
 @app.route("/api/predict", methods=["POST"])
@@ -101,7 +114,6 @@ def predict():
     output = version.predict(**inputs)
     return jsonify({"prediction_url": output})
 
-
 # Upload Images
 @app.route('/api/upload', methods=['POST'])
 def upload():
@@ -124,3 +136,32 @@ def upload():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+
+
+
+# @app.route('/api/process_images', methods=['POST'])
+# def process_images():
+#     # Get the zip file from the request
+#     zip_file = request.files['file']
+
+#     # Create a temporary directory to extract the zip file into
+#     temp_dir = 'temp'
+#     os.makedirs(temp_dir, exist_ok=True)
+#     with zipfile.ZipFile(zip_file, 'r') as zip_ref:
+#         zip_ref.extractall(temp_dir)
+
+#     # Convert all images to JPEG and save them in a new directory
+#     output_dir = 'output'
+#     os.makedirs(output_dir, exist_ok=True)
+
+#     temp_dir = "temp/data"
+
+#     for filename in os.listdir(temp_dir):
+#         print(filename)
+#         if not filename.endswith('.jpg') or not filename.endswith('.JPG') or not filename.endswith('.jpeg') or not filename.endswith('.JPEG'):
+#             image = Image.open(os.path.join(temp_dir, filename))
+#             image = image.convert('RGB')
+#             new_filename = os.path.splitext(filename)[0] + '.jpg'
+#             image.save(os.path.join(output_dir, new_filename))
