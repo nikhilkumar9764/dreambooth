@@ -16,7 +16,7 @@ curl -X POST \
 
 curl -X POST -F file=@data.zip http://127.0.0.1:5000/process_images
 
-curl -X POST -F file=@data.zip http://127.0.0.1:5000/api/upload
+curl -X POST -F file=@untitled.zip http://127.0.0.1:5000/api/upload
 
 
 
