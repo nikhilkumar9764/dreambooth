@@ -50,6 +50,20 @@ def dreambooth_create_model():
     r = requests.post(url, headers=headers, json=data)
     return r.json()
 
+# Create a LORA Model
+@app.route("/api/create_lora", methods=["POST"])
+def create_lora():
+    body = request.get_json()
+
+    #parameters from call 
+    serving_url = body["serving_url"]
+    
+    training_model = replicate.models.get("replicate/lora-training")
+    version = training_model.versions.get("b2a308762e36ac48d16bfadc03a65493fe6e799f429f7941639a6acec5b276cc")
+
+    lora_url = version.predict(instance_data=serving_url, task="style")
+    return jsonify({"prediction_url": lora_url})
+
 # Webhook
 @app.route('/api/webhook', methods=['POST'])
 def webhook():
